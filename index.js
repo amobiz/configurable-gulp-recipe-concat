@@ -16,18 +16,18 @@
  */
 function concat(done) {
 	// lazy loading required modules.
-	var queue = require('configurable-gulp-recipe-queue'),
-		gulpConcat = require('gulp-concat');
+	var queue = require('gulp-ccr-queue');
+	var gulpConcat = require('gulp-concat');
 
-	var verify = require('configurable-gulp-helper').verifyConfiguration,
-		PluginError = require('gulp-util').PluginError;
+	var verify = require('gulp-ccr-helper').verifyConfiguration;
+	var PluginError = require('gulp-util').PluginError;
 
-	var context = this,
-		gulp = context.gulp,
-		config = context.config,
-		upstream = context.upstream,
-		tasks = context.tasks,
-		stream;
+	var context = this;
+	var gulp = context.gulp;
+	var config = context.config;
+	var upstream = context.upstream;
+	var tasks = context.tasks;
+	var stream;
 
 	verify(concat.schema, config);
 
@@ -46,21 +46,21 @@ function concat(done) {
 }
 
 concat.schema = {
-	"title": "concat",
-	"description": "Concatenates files",
-	"properties": {
-		"src": {
-			"description": ""
+	title: 'concat',
+	description: 'Concatenates files',
+	properties: {
+		src: {
+			description: ''
 		},
-		"dest": {
-			"description": ""
+		dest: {
+			description: ''
 		},
-		"file": {
-			"description": "",
-			"type": "string"
+		file: {
+			description: '',
+			type: 'string'
 		}
 	},
-	"required": ["dest", "file"]
+	required: ['dest', 'file']
 };
 
 concat.type = 'stream';

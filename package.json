@@ -1,24 +1,27 @@
 {
   "name": "gulp-ccr-concat",
   "version": "0.1.0",
-  "description": "Configurable gulp recipe that concatenates streams.",
+  "description": "Cascading Configurable Gulp Recipe for gulp-chef that concatenates streams.",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gulp-ccr/gulp-ccr-concat.git"
+    "url": "git+https://github.com/gulp-cookery/gulp-ccr-concat.git"
+  },
+  "scripts": {
+    "test": "mocha"
   },
   "keywords": [
     "gulp",
     "gulp 4.0",
+	"gulp-cookery",
+	"gulp-chef",
     "gulp-ccr",
     "configurable-gulp-recipe",
     "configurable-gulp-recipes",
     "stream",
     "concat",
     "concat stream",
+	"cookery",
     "plugin",
     "plugins",
     "recipe",
@@ -30,16 +33,19 @@
   "author": "Amobiz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gulp-ccr/gulp-ccr-concat/issues"
+    "url": "https://github.com/gulp-cookery/gulp-ccr-concat/issues"
   },
-  "homepage": "https://github.com/gulp-ccr/gulp-ccr-concat#readme",
+  "homepage": "https://github.com/gulp-cookery/gulp-ccr-concat#readme",
+  "peerDependencies": {
+    "gulp-chef": "git+https://github.com/gulp-cookery/gulp-chef.git"
+  },
   "devDependencies": {
     "mocha": "^2.3.4",
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
-    "gulp-ccr-helper": "git+https://github.com/gulp-ccr/gulp-ccr-helper.git",
-    "gulp-ccr-queue": "git+https://github.com/gulp-ccr/gulp-ccr-queue.git",
+    "gulp-ccr-helper": "git+https://github.com/gulp-cookery/gulp-ccr-helper.git",
+    "gulp-ccr-queue": "git+https://github.com/gulp-cookery/gulp-ccr-queue.git",
     "gulp-concat": "^2.6.0",
     "gulp-util": "^3.0.7"
   }

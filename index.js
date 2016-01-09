@@ -14,7 +14,7 @@
  * @param tasks configurable sub-tasks
  *
  */
-function concat(done) {
+function concat() {
 	// lazy loading required modules.
 	var queue = require('gulp-ccr-queue');
 	var gulpConcat = require('gulp-concat');
@@ -22,26 +22,31 @@ function concat(done) {
 	var verify = require('gulp-ccr-helper').verifyConfiguration;
 	var PluginError = require('gulp-util').PluginError;
 
-	var context = this;
-	var gulp = context.gulp;
-	var config = context.config;
-	var upstream = context.upstream;
-	var tasks = context.tasks;
+	var gulp = this.gulp;
+	var config = this.config;
+	var upstream = this.upstream;
+	var tasks = this.tasks || [];
 	var stream;
 
 	verify(concat.schema, config);
 
-	if (tasks.length !== 0) {
-		stream = queue.call(context);
+	if (tasks.length) {
+		stream = queue.call(this);
+	} else if (upstream) {
+		stream = upstream;
+	} else if (config.src) {
+		stream = gulp.src(config.src.globs, config.src.options);
 	} else {
-		if (!upstream && !config.src) {
-			throw new PluginError('concat', 'configuration property "src" is required, otherwise an up-stream must be provided')
-		}
-		stream = upstream || gulp.src(config.src.globs, config.src.options);
+		throw new PluginError('concat', 'configuration property "src" is required, otherwise an up-stream must be provided');
+	}
+
+	stream = stream.pipe(gulpConcat(config.file));
+
+	if ('sprout' in config && !config.sprout) {
+		return stream;
 	}
 
 	return stream
-		.pipe(gulpConcat(config.file))
 		.pipe(gulp.dest(config.dest.path, config.dest.options));
 }
 
@@ -58,6 +63,11 @@ concat.schema = {
 		file: {
 			description: '',
 			type: 'string'
+		},
+		sprout: {
+			description: '',
+			type: 'boolean',
+			default: 'true'
 		}
 	},
 	required: ['dest', 'file']

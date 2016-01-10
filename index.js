@@ -8,18 +8,13 @@
  * 	streamqueue
  * 	gulp-concat
  *
- * @param gulp the gulp instance running this task
- * @param config configuration for the task
- * @param stream up-stream, if not null, the task must handle source from the stream
- * @param tasks configurable sub-tasks
- *
  */
 function concat() {
 	// lazy loading required modules.
 	var queue = require('gulp-ccr-queue');
 	var gulpConcat = require('gulp-concat');
 
-	var verify = require('gulp-ccr-helper').verifyConfiguration;
+	var verify = require('gulp-ccr-config-helper');
 	var PluginError = require('gulp-util').PluginError;
 
 	var gulp = this.gulp;
@@ -55,10 +50,12 @@ concat.schema = {
 	description: 'Concatenates files',
 	properties: {
 		src: {
-			description: ''
+			description: '',
+			type: 'glob'
 		},
 		dest: {
-			description: ''
+			description: '',
+			type: 'path'
 		},
 		file: {
 			description: '',

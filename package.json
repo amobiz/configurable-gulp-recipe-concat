@@ -44,7 +44,7 @@
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
-    "gulp-ccr-helper": "git+https://github.com/gulp-cookery/gulp-ccr-helper.git",
+    "gulp-ccr-stream-helper": "git+https://github.com/gulp-cookery/gulp-ccr-stream-helper.git",
     "gulp-ccr-queue": "git+https://github.com/gulp-cookery/gulp-ccr-queue.git",
     "gulp-concat": "^2.6.0",
     "gulp-util": "^3.0.7"

@@ -42,7 +42,7 @@ function concat() {
 
 	stream = stream.pipe(gulpConcat(config.file));
 
-	if ('sprout' in config && !config.sprout) {
+	if ('spit' in config && !config.spit) {
 		return stream;
 	}
 
@@ -64,10 +64,10 @@ concat.schema = {
 			description: '',
 			type: 'string'
 		},
-		sprout: {
+		spit: {
 			description: '',
 			type: 'boolean',
-			default: 'true'
+			default: true
 		}
 	},
 	required: ['dest', 'file']

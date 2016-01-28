@@ -1,7 +1,7 @@
 {
   "name": "gulp-ccr-concat",
   "version": "0.1.0",
-  "description": "Cascading Configurable Gulp Recipe for gulp-chef that concatenates streams.",
+  "description": "Concatenates streams. A cascading configurable gulp recipe for gulp-chef.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -19,13 +19,15 @@
     "configurable-gulp-recipe",
     "configurable-gulp-recipes",
     "stream",
+	"concatenate",
     "concat",
     "concat stream",
-	"cookery",
     "plugin",
     "plugins",
     "recipe",
     "recipes",
+	"cascading",
+	"configure",
     "configurable",
     "configuration",
     "configurations"
@@ -37,15 +39,16 @@
   },
   "homepage": "https://github.com/gulp-cookery/gulp-ccr-concat#readme",
   "peerDependencies": {
-    "gulp-chef": "git+https://github.com/gulp-cookery/gulp-chef.git"
+    "gulp-chef": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "^2.3.4",
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
-    "gulp-ccr-stream-helper": "git+https://github.com/gulp-cookery/gulp-ccr-stream-helper.git",
-    "gulp-ccr-queue": "git+https://github.com/gulp-cookery/gulp-ccr-queue.git",
+	"gulp-ccr-config-helper": "^0.1.0",
+    "gulp-ccr-stream-helper": "^0.1.0",
+    "gulp-ccr-queue": "^0.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-util": "^3.0.7"
   }

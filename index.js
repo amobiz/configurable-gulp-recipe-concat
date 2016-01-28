@@ -1,14 +1,22 @@
 'use strict';
 
-/**
- * Recipe:
- * 	Serial Join (from gulp.js cheatsheet p.2)
- *
- * Ingredients:
- * 	streamqueue
- * 	gulp-concat
- *
- */
+var schema = {
+	title: 'concat',
+	description: 'Concatenates streams.',
+	properties: {
+		file: {
+			description: 'Give concatenated stream a new file name.',
+			type: 'string'
+		},
+		spit: {
+			description: 'Optional. Whether to write out file or not. Useful when piping stream for further processing. Default is true.',
+			type: 'boolean',
+			default: true
+		}
+	},
+	required: ['file']
+};
+
 function concat() {
 	// lazy loading required modules.
 	var queue = require('gulp-ccr-queue');
@@ -23,7 +31,7 @@ function concat() {
 	var tasks = this.tasks || [];
 	var stream;
 
-	verify(concat.schema, config);
+	verify(schema, config);
 
 	if (tasks.length) {
 		stream = queue.call(this);
@@ -45,31 +53,6 @@ function concat() {
 		.pipe(gulp.dest(config.dest.path, config.dest.options));
 }
 
-concat.schema = {
-	title: 'concat',
-	description: 'Concatenates files',
-	properties: {
-		src: {
-			description: '',
-			type: 'glob'
-		},
-		dest: {
-			description: '',
-			type: 'path'
-		},
-		file: {
-			description: '',
-			type: 'string'
-		},
-		spit: {
-			description: '',
-			type: 'boolean',
-			default: true
-		}
-	},
-	required: ['dest', 'file']
-};
-
-concat.type = 'stream';
-
 module.exports = concat;
+module.exports.schema = schema;
+module.exports.type = 'stream';
